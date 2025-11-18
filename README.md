@@ -64,7 +64,3 @@ Baza podataka: **MongoDB**.
 
 ### **Baza**
 - MongoDB (Atlas ili lokalno)
-
-
-## 📁 Struktura projekta
-
