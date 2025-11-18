@@ -1,0 +1,37 @@
+FRONTEND
+
+@fullcalendar/angular – https://fullcalendar.io/docs/angular
+
+@fullcalendar/core – https://fullcalendar.io/
+
+@fullcalendar/daygrid – https://fullcalendar.io/docs/daygrid-view
+
+@fullcalendar/interaction – https://fullcalendar.io/docs/interaction
+npm i @fullcalendar/angular @fullcalendar/core @fullcalendar/daygrid @fullcalendar/interaction
+
+
+Chart.js – https://www.chartjs.org/
+npm i chart.js
+
+
+Leaflet – https://leafletjs.com/
+npm i leaflet && npm i -D @types/leaflet
+tipovi - npm i -D @types/leaflet
+
+BACKEND
+
+cors – https://www.npmjs.com/package/cors
+
+bcrypt – https://www.npmjs.com/package/bcrypt
+
+jsonwebtoken – https://www.npmjs.com/package/jsonwebtoken
+
+express-validator – https://express-validator.github.io/
+
+multer – https://www.npmjs.com/package/multer
+
+sharp – https://sharp.pixelplumbing.com/
+
+
+npm i cors bcrypt jsonwebtoken express-validator multer sharp
+tipovi - npm i -D @types/bcrypt @types/jsonwebtoken @types/multer @types/node @types/express

@@ -1,0 +1,23 @@
+<h2 class="h2">Statistika</h2>
+
+<div class="card chart-card">
+  <h3 class="h3">Rezervacije po mesecima</h3>
+  <div class="chart-box">
+    <canvas id="barMonthly"></canvas>
+  </div>
+</div>
+
+<div class="card chart-card">
+  <div class="pie-controls">
+    <label for="cabin-select">Prikaži za vikendicu:</label>
+    <select id="cabin-select" class="input" [(ngModel)]="selectedCabinId" (change)="renderPie()">
+      @for (c of cabins; track c.id) {
+        <option [value]="c.id">{{ c.name }}</option>
+      }
+    </select>
+  </div>
+  <h3 class="h3">Odnos rezervacija: Vikend vs. Radna nedelja</h3>
+  <div class="chart-box">
+    <canvas id="pieWeekend"></canvas>
+  </div>
+</div>

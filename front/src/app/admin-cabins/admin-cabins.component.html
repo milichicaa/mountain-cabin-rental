@@ -1,0 +1,73 @@
+<h2 class="h2">Vikendice (admin)</h2>
+
+@if (loading) {
+  <p class="status-info">Učitavanje…</p>
+} @else if (errorMsg) {
+  <p class="status-error">{{ errorMsg }}</p>
+} @else if (infoMsg) {
+  <p class="status-success">{{ infoMsg }}</p>
+}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Naziv</th>
+      <th>Mesto</th>
+      <th>Cena/noć</th>
+      <th>Poslednje 3 ocene</th>
+      <th>Status</th>
+      <th class="actions-header">Akcije</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (c of rows; track c._id) {
+      <tr [class.danger]="c.low3">
+        <td>{{ c.name }}</td>
+        <td>{{ c.place }}</td>
+        <td>
+          @if (c.pricePerNightSummer != null && c.pricePerNightWinter != null) {
+            {{ c.pricePerNightSummer }}€ / {{ c.pricePerNightWinter }}€
+            <small class="hint">(leto / zima)</small>
+          } @else {
+            —
+          }
+        </td>
+        <td>
+          @if (c.last3?.length) {
+            {{ ratingsList(c) }}
+          } @else {
+            —
+          }
+        </td>
+        <td>
+          @if (isBlockedNow(c)) {
+            <span class="badge blocked">
+              Blok. do {{ c.blockedUntil | date:'dd.MM.yy HH:mm' }}
+            </span>
+          } @else {
+            <span class="badge active">Aktivna</span>
+          }
+        </td>
+        <td class="actions">
+          @if (c.low3 && !isBlockedNow(c)) {
+            <button class="btn" (click)="block(c)" [disabled]="loading">
+              Blokiraj 48h
+            </button>
+          }
+          @if (isBlockedNow(c)) {
+            <button class="btn secondary" (click)="unblock(c)" [disabled]="loading">
+              Odblokiraj
+            </button>
+          }
+          @if (!c.low3 && !isBlockedNow(c)) {
+            <span>—</span>
+          }
+        </td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="6" class="empty-state">Nema vikendica.</td>
+      </tr>
+    }
+  </tbody>
+</table>

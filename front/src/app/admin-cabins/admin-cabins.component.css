@@ -1,0 +1,83 @@
+/*
+  Lokalni stilovi za ovu komponentu.
+  Globalni stilovi za .table, .btn, itd. se nasleđuju iz styles.css.
+*/
+
+/* Crvenkasta pozadina za low3 */
+.table tr.danger {
+  background-color: #fef2f2; /* Nežno crvena */
+}
+.table tr.danger:hover {
+  background-color: #fee2e2;
+}
+
+/* Bedževi statusa */
+.badge.active {
+  background-color: #f0fdf4; /* Zelena pozadina */
+  color: #15803d;      /* Tamno zeleni tekst */
+}
+.badge.blocked {
+  background-color: #fef2f2; /* Crvena pozadina */
+  color: #b91c1c;      /* Tamno crveni tekst */
+}
+
+/* Akcije kolona */
+.actions-header {
+  width: 150px;
+  text-align: right;
+}
+td.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Statusne poruke */
+.status-error {
+  color: #b91c1c;
+  background-color: #fef2f2;
+  padding: 10px;
+  border-radius: 8px;
+}
+.status-success {
+  color: #15803d;
+  background-color: #f0fdf4;
+  padding: 10px;
+  border-radius: 8px;
+}
+.status-info {
+  color: #075985;
+  background-color: #e0f2fe;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Prazna tabela */
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+}
+
+.hint {
+  color: #6c757d;
+  font-size: 0.9em;
+}
+
+/* Osnovno tabela */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th,
+.table td {
+  border-bottom: 1px solid #eee;
+  padding: 8px 10px;
+  text-align: left;
+}
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+}

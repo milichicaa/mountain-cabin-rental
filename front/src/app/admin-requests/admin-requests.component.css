@@ -1,0 +1,58 @@
+/*
+  Lokalni stilovi za ovu komponentu.
+  Globalni stilovi za .table, .btn, .input se nasleđuju iz styles.css.
+*/
+
+.filters-bar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-group .input {
+  width: 180px; /* Ograničavamo širinu select polja */
+}
+
+.total-count {
+  color: #64748b;
+  font-size: 0.9em;
+  margin-left: auto; /* Gura brojač na desnu stranu */
+}
+
+/* Statusne poruke */
+.status-info, .status-error, .status-success {
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+.status-info { background-color: #e0f2fe; color: #075985; }
+.status-error { background-color: #fef2f2; color: #b91c1c; }
+.status-success { background-color: #f0fdf4; color: #15803d; }
+
+/* Stilovi za bedževe statusa */
+.badge.status-pending { background-color: #fefce8; color: #a16207; }
+.badge.status-accepted { background-color: #f0fdf4; color: #15803d; }
+.badge.status-rejected { background-color: #fef2f2; color: #b91c1c; }
+
+/* Poravnanje kolone sa akcijama */
+.actions-header {
+  text-align: right;
+}
+td.actions {
+  text-align: right;
+}
+
+/* Poruka za praznu tabelu */
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+}

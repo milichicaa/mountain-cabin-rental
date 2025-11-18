@@ -1,0 +1,47 @@
+<div class="toolbar">
+  <h2 class="h2">Moje vikendice</h2>
+  <div class="actions">
+    <button class="btn secondary" (click)="load()" [disabled]="loading">Osveži</button>
+    <button class="btn" [routerLink]="['/owner/cabins/create']">Dodaj novu</button>
+  </div>
+</div>
+
+@if (loading) { <p class="status-info">Učitavanje...</p> }
+@if (errorMsg) { <p class="status-error">{{ errorMsg }}</p> }
+@if (infoMsg)  { <p class="status-success">{{ infoMsg }}</p> }
+
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Naziv</th>
+        <th>Mesto</th>
+        <th>Cena/noć (leto/zima)</th>
+        <th>Blokirana</th>
+        <th class="actions-header">Akcije</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (c of rows; track c._id) {
+        <tr>
+          <td>{{ c.name }}</td>
+          <td>{{ c.place }}</td>
+          <td>{{ c.pricePerNightSummer }}€ / {{ c.pricePerNightWinter }}€</td>
+          <td>
+            <span class="badge" [class.blocked]="c.isBlocked">
+              {{ c.isBlocked ? 'DA' : 'NE' }}
+            </span>
+          </td>
+          <td class="actions-cell">
+            <button class="btn secondary" (click)="edit(c)" [disabled]="loading">Izmeni</button>
+            <button class="btn danger" (click)="remove(c)" [disabled]="loading || c.isBlocked" title="{{ c.isBlocked ? 'Ne možete obrisati blokiranu vikendicu' : '' }}">Obriši</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="5" class="empty-state">Nema dodatih vikendica.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

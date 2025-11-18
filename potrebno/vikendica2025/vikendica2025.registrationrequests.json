@@ -1,0 +1,88 @@
+[{
+  "_id": {
+    "$oid": "671a0000000000000000a101"
+  },
+  "username": "novi.turista",
+  "email": "novi.turista@example.com",
+  "passwordHash": "$2b$10$yL6FKQ2gdtqiQVXU0lnySuJltlnCq53RUs4PWMWrTQNFRAP9fF6Yu",
+  "firstName": "Novak",
+  "lastName": "Turistić",
+  "gender": "M",
+  "address": "Ulica Test 1, Niš",
+  "phone": "+381601234567",
+  "role": "turista",
+  "profileImagePath": "/uploads/requests/turista_novi.jpg",
+  "creditCardMasked": "**** **** **** 4485",
+  "creditCardFull": "4485448544854485",
+  "status": "pending",
+  "reason": "",
+  "createdAt": {
+    "$date": "2025-10-18T11:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000a102"
+  },
+  "username": "pera.peric",
+  "email": "pera.peric@example.com",
+  "passwordHash": "$2b$10$yL6FKQ2gdtqiQVXU0lnySuJltlnCq53RUs4PWMWrTQNFRAP9fF6Yu",
+  "firstName": "Pera",
+  "lastName": "Perić",
+  "gender": "M",
+  "address": "Njegoševa 2, Čačak",
+  "phone": "+381607777777",
+  "role": "vlasnik",
+  "profileImagePath": "/uploads/requests/vlasnik_pera.jpg",
+  "creditCardMasked": "**** **** **** 4929",
+  "creditCardFull": "4929492949294929",
+  "status": "pending",
+  "reason": "",
+  "createdAt": {
+    "$date": "2025-10-17T09:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000a103"
+  },
+  "username": "pavle",
+  "email": "pavle@example.com",
+  "passwordHash": "$2b$10$yL6FKQ2gdtqiQVXU0lnySuJltlnCq53RUs4PWMWrTQNFRAP9fF6Yu",
+  "firstName": "Pavle",
+  "lastName": "Pavlović",
+  "gender": "M",
+  "address": "Knez Mihailova 1, Beograd",
+  "phone": "+381601111111",
+  "role": "turista",
+  "profileImagePath": "/uploads/requests/pavle.jpg",
+  "creditCardMasked": "**** **** **** 4716",
+  "creditCardFull": "4716471647164716",
+  "status": "rejected",
+  "reason": "Netačna adresa i dupli email.",
+  "createdAt": {
+    "$date": "2025-10-10T10:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000a104"
+  },
+  "username": "turista6_accepted",
+  "email": "t6@example.com",
+  "passwordHash": "$2b$10$yL6FKQ2gdtqiQVXU0lnySuJltlnCq53RUs4PWMWrTQNFRAP9fF6Yu",
+  "firstName": "Sara",
+  "lastName": "Sarić",
+  "gender": "Ž",
+  "address": "Vojvode Stepe 200, Beograd",
+  "phone": "+381605551111",
+  "role": "turista",
+  "profileImagePath": "/uploads/requests/sara.jpg",
+  "creditCardMasked": "**** **** **** 4929",
+  "creditCardFull": "4929492949294929",
+  "status": "accepted",
+  "reason": "",
+  "createdAt": {
+    "$date": "2025-10-05T08:00:00.000Z"
+  }
+}]

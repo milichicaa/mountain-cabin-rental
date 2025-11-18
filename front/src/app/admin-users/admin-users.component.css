@@ -1,0 +1,98 @@
+/*
+  Lokalni stilovi. Globalni stilovi za .table, .btn, .input se nasleđuju.
+*/
+
+.toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.total-count {
+  margin-left: auto;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Statusne poruke */
+.status-info, .status-error, .status-success {
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+.status-info { background-color: #e0f2fe; color: #075985; }
+.status-error { background-color: #fef2f2; color: #b91c1c; }
+.status-success { background-color: #f0fdf4; color: #15803d; }
+
+/* Forma za kreiranje korisnika */
+.create-user-form {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+.form-footer .hint {
+  color: #64748b;
+}
+
+.separator {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 2rem 0;
+}
+
+/* Tabela i njene akcije */
+.table-responsive {
+  overflow-x: auto; /* Omogućava horizontalni skrol na manjim ekranima */
+}
+.table td .input {
+  min-width: 150px; /* Širina inputa u edit modu */
+}
+.badge.inactive {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+.actions-header {
+  text-align: right;
+}
+td.actions {
+  text-align: right;
+  min-width: 250px; /* Sprečava prelamanje dugmića */
+}
+.edit-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+.btn.danger {
+  background-color: #ef4444;
+  border-color: #ef4444;
+  color: white;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+}
+
+.table { width:100%; border-collapse: collapse; }
+.table th, .table td { border-bottom: 1px solid #eee; padding: 8px 10px; text-align: left; vertical-align: middle; }
+.input { min-width: 160px; }
+.btn-row { display: inline-flex; align-items: center; gap: 6px; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; background: #eef; }

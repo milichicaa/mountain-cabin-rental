@@ -1,0 +1,165 @@
+/* Uvek računaj padding+border u širinu/visinu elemenata */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  background: #fafafa;
+  color: #111827;
+  line-height: 1.5;
+  margin: 0;
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, .brand { letter-spacing: .2px; }
+
+/* Kontejner da ne beži sadržaj u širinu */
+.page { max-width: 1100px; margin: 24px auto; padding: 0 16px; }
+
+/* Osnovni reset za forme - samo da naslede font */
+input, select, button { font: inherit; }
+
+/* Header */
+.topbar { padding: 0; box-shadow: 0 4px 16px rgba(2,6,23,.12); backdrop-filter: blur(6px); }
+.topbar .inner {
+  max-width: 1100px; margin: 0 auto; padding: 12px 16px; width: 100%;
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+/* Meni linkovi */
+.menu a.active {
+  color: #ffffff;
+  border-bottom: 2px solid #0ea5e9;
+  padding-bottom: 2px;
+  text-decoration: none;
+}
+.menu a:focus-visible, .menu .linklike:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(14,165,233,.45);
+  border-radius: 6px;
+}
+.menu .linklike { padding: 4px 6px; color: #e2e8f0; }
+.menu .linklike:hover { color: #fff; text-decoration: underline; }
+
+/* === UI kit – globalne klase === */
+
+/* Dugmad */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid #0ea5e9;
+  background: #0ea5e9; color: white; font-weight: 600; cursor: pointer;
+  transition: transform .03s ease, box-shadow .15s, filter .15s;
+  box-shadow: 0 1px 0 rgba(14,165,233,.3);
+}
+.btn:hover:not(:disabled) { filter: brightness(1.05); }
+.btn:active:not(:disabled) { transform: translateY(1px); }
+.btn.secondary { background: #ffffff; color: #0ea5e9; }
+.btn:disabled { opacity: .6; cursor: not-allowed; }
+.btn:focus-visible { outline: 0; box-shadow: 0 0 0 4px rgba(14,165,233,.25); }
+
+/* Input */
+.input {
+  width: 100%; height: 40px; padding: 0 12px; border: 1px solid #e2e8f0; border-radius: 10px; background: white;
+  outline: none; transition: box-shadow .15s, border-color .15s;
+}
+.input:focus { border-color: #0ea5e9; box-shadow: 0 0 0 4px rgba(14,165,233,.15); }
+.input::placeholder { color: #9ca3af; }
+.input.invalid {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239,68,68,.15);
+}
+
+/* Kartice */
+.card {
+  background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 14px;
+  box-shadow: 0 4px 14px rgba(2,6,23,.04);
+  transition: box-shadow .15s, transform .06s;
+}
+.card:hover { box-shadow: 0 10px 28px rgba(2,6,23,.10); transform: translateY(-1px); }
+
+/* Cards grid */
+.cards-grid { display: grid; gap: 12px; }
+@media(min-width: 800px) { .cards-grid { grid-template-columns: repeat(4, 1fr); } }
+@media(max-width: 799px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* Tabela */
+.table {
+  width: 100%; border-collapse: collapse; background: white; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;
+}
+.table th, .table td { padding: 12px; border-bottom: 1px solid #eef2f7; vertical-align: top; }
+.table thead th {
+  background: #f1f5f9; text-align: left; font-weight: 700; color: #0f172a;
+  position: sticky; top: 0; z-index: 1;
+}
+.table tbody tr:hover { background: #f8fafc; }
+
+/* Pomoćne klase */
+.h2 { font-size: 1.5rem; margin: 0 0 12px 0; }
+.h3 { font-size: 1.15rem; margin: 22px 0 10px; }
+.stack-sm { display: flex; flex-direction: column; gap: 8px; }
+.stack-md { display: flex; flex-direction: column; gap: 12px; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #eef2f7;
+  color: #334155;
+  font-size: .85rem;
+  font-weight: 600;
+}
+.hint { color: #b91c1c; font-size: .9rem; margin-top: 4px; }
+.stat { font-size: 26px; font-weight: 700; letter-spacing: .2px; font-variant-numeric: tabular-nums; }
+
+/* Auth layout */
+.auth-wrap {
+  min-height: calc(100dvh - 120px);
+  display: grid; place-items: center;
+}
+.auth-card { width: 100%; max-width: 520px; }
+.auth-card h2 { font-size: 28px; margin: 0 0 12px }
+.auth-card .btn { width: 100%; }
+.auth-card form { display: flex; flex-direction: column; gap: 8px; }
+
+/* Sortiranje tabele */
+.sortable { position: relative; padding-right: 18px; cursor: pointer; user-select: none; }
+.sortable::after {
+  content: "▾"; position: absolute; right: 6px; top: 50%;
+  transform: translateY(-40%) rotate(180deg);
+  font-size: .8rem; color: #64748b;
+}
+.sortable.asc::after { transform: translateY(-40%) rotate(180deg); }
+.sortable.desc::after { transform: translateY(-40%) rotate(0deg); }
+
+/* Red za dugmad */
+.btn-row { display: flex; gap: 8px; }
+.btn-row .btn { width: auto; }
+
+/* Profil avatar */
+.avatar {
+  width: 104px !important; height: 104px !important;
+  border-radius: 50%; object-fit: cover;
+  flex: 0 0 104px !important; /* Fiksna veličina u flex layoutu */
+  display: block;
+}
+
+/* Stilovi za grafikone (Chart.js) */
+.chart-card { position: relative; overflow: visible; }
+.chart-card canvas { display: block; width: 100% !important; height: 360px !important; }
+.chart-card canvas.pie { height: 260px !important; }
+.chart-card select.input { position: relative; z-index: 3; }
+.chart-card .chart-legend-fix { position: relative; z-index: 1; }
+.chart-box { position: relative; height: 340px; }
+
+/* Zvezdice za ocene */
+.stars {
+  display: inline-flex;
+  gap: 2px;
+  color: #f59e0b; /* Amber boja */
+  font-size: 1.1rem;
+  line-height: 1;
+}
+.stars .star-bg {
+  color: #d1d5db; /* Siva pozadina */
+}
+

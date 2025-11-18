@@ -1,0 +1,65 @@
+<h2 class="h2">Zahtevi za registraciju</h2>
+
+<div class="filters-bar">
+  <div class="form-group">
+    <label for="status-filter">Status:</label>
+    <select id="status-filter" class="input" [(ngModel)]="status">
+      <option value="all">Svi</option>
+      <option value="pending">Na čekanju</option>
+      <option value="accepted">Prihvaćeni</option>
+      <option value="rejected">Odbijeni</option>
+    </select>
+  </div>
+
+  <button class="btn" (click)="load()" [disabled]="loading">Osveži</button>
+
+  <span class="total-count">Ukupno: {{ filtered.length }}</span>
+</div>
+
+@if (loading) {
+  <p class="status-info">Učitavanje...</p>
+} @else if (errorMsg) {
+  <p class="status-error">{{ errorMsg }}</p>
+} @else if (infoMsg) {
+  <p class="status-success">{{ infoMsg }}</p>
+}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Korisnik</th>
+      <th>Email</th>
+      <th>Uloga</th>
+      <th>Status</th>
+      <th>Kreiran</th>
+      <th class="actions-header">Akcije</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (r of filtered; track r._id) {
+      <tr>
+        <td>{{ r.username || '—' }}</td>
+        <td>{{ r.email || '—' }}</td>
+        <td>{{ r.role || '—' }}</td>
+        <td>
+          <span class="badge" [ngClass]="'status-' + r.status">{{ r.status }}</span>
+        </td>
+        <td>{{ r.createdAt | date:'dd.MM.yyyy' }}</td>
+        <td class="actions">
+          @if (r.status === 'pending') {
+            <div class="btn-row">
+              <button class="btn" (click)="accept(r)" [disabled]="loading">Prihvati</button>
+              <button class="btn secondary" (click)="reject(r)" [disabled]="loading">Odbij</button>
+            </div>
+          } @else {
+            <span>—</span>
+          }
+        </td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="6" class="empty-state">Nema zahteva za prikaz.</td>
+      </tr>
+    }
+  </tbody>
+</table>

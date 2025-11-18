@@ -1,0 +1,87 @@
+/* Glavna kartica za formu */
+.form-card {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Kontejner za celu formu */
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Razmak između grupa */
+}
+
+/* Red sa više grupa */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* Grupa (labela + input) */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Poruka za validaciju */
+.hint {
+  font-size: 0.8em;
+  color: #b91c1c; /* Crvena boja za greške */
+}
+
+/* Sekcija za upload fajlova */
+.upload-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+/* Stil za file input */
+.input-file {
+  font-size: 0.9em;
+}
+
+/* Mreža za prikaz slika */
+.image-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.preview-img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+}
+
+/* Statusne poruke */
+.status-error, .status-success {
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+.status-error {
+  background-color: #fef2f2;
+  color: #b91c1c;
+}
+.status-success {
+  background-color: #f0fdf4;
+  color: #15803d;
+}
+
+/* Red sa dugmetom za slanje */
+.submit-row {
+  margin-top: 1rem;
+  border-top: 1px solid #e9ecef;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}

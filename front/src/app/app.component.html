@@ -1,0 +1,59 @@
+<!-- HEADER -->
+<header class="topbar">
+  <div class="inner">
+    <div class="brand">{{ title }}</div>
+
+    <nav class="menu">
+      <!-- Javni linkovi (samo neregistrovani vide Početna) -->
+      @if (!auth.isLoggedIn()) {
+        <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Početna</a>
+        <a routerLink="/register" routerLinkActive="active">Registracija</a>
+        <a routerLink="/login" routerLinkActive="active">Login</a>
+      }
+
+      <!-- Ulogovan turist/owner -->
+      @if (auth.isLoggedIn()) {
+        <span class="who">👤 {{ username }} ({{ role$ | async }})</span>
+
+        @if ((role$ | async) === 'vlasnik') {
+          <!-- Linkovi za VLASNIKA -->
+          <a routerLink="/owner/profile" routerLinkActive="active">Profil</a>
+          <a routerLink="/owner/reservations" routerLinkActive="active">Rezervacije</a>
+          <a routerLink="/owner/cabins" routerLinkActive="active">Moje vikendice</a>
+          <a routerLink="/owner/stats" routerLinkActive="active">Statistika</a>
+        } @else if ((role$ | async) === 'turista') {
+          <!-- Linkovi za TURISTU -->
+          <a routerLink="/profile" routerLinkActive="active">Profil</a>
+          <a routerLink="/home" routerLinkActive="active">Vikendice</a>
+          <a routerLink="/reservations/mine" routerLinkActive="active">Moje rezervacije</a>
+        } @else if ((role$ | async) === 'admin') {
+          <!-- Linkovi za ADMINA -->
+          <a routerLink="/admin/requests" routerLinkActive="active">Zahtevi</a>
+          <a routerLink="/admin/users" routerLinkActive="active">Korisnici</a>
+          <a routerLink="/admin/cabins" routerLinkActive="active">Vikendice</a>
+        }
+
+        <a routerLink="/change-password" routerLinkActive="active">Promena lozinke</a>
+        <button class="linklike" (click)="logout()">Izloguj se</button>
+      } @else if (auth.isLoggedIn() && auth.getRole() === 'admin') {
+        <!-- Ulogovan admin -->
+        <span class="who">🛡️ {{ auth.getUsername() }} (admin)</span>
+        <a routerLink="/admin/requests" routerLinkActive="active">Zahtevi</a>
+        <a routerLink="/admin/users" routerLinkActive="active">Korisnici</a>
+        <a routerLink="/admin/cabins" routerLinkActive="active">Vikendice</a>
+        <a routerLink="/change-password" routerLinkActive="active">Promena lozinke</a>
+        <button class="linklike" (click)="logout()">Izloguj se</button>
+      }
+    </nav>
+  </div>
+</header>
+
+<!-- SADRŽAJ STRANICE -->
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  ETF — PIA 2024/25
+</footer>

@@ -1,0 +1,199 @@
+[{
+  "_id": {
+    "$oid": "671a0000000000000000d001"
+  },
+  "owner": {
+    "$oid": "671a0000000000000000b001"
+  },
+  "name": "Kopaonik Sunčani Breg",
+  "place": "Kopaonik",
+  "address": "Suncana Dolina bb, Kopaonik",
+  "description": "Topla planinska koliba na 1200mnv, idealna za skijanje.",
+  "maxGuests": 6,
+  "amenities": [
+    "WiFi",
+    "Parking",
+    "Sauna",
+    "Kamin"
+  ],
+  "images": [
+    "/uploads/cabins/1760971594593-qvnnw5fkira.jpg",
+    "/uploads/cabins/1760971594594-vzhkzti67ym.jpg",
+    "/uploads/cabins/1760971594595-vt59h7utevf.jpg",
+    "/uploads/cabins/1760971594594-xalik8kudl.jpg"
+  ],
+  "ratingAvg": 4.33,
+  "ratingCount": 3,
+  "isBlocked": false,
+  "blockedUntil": null,
+  "lat": 43.285,
+  "lng": 20.8,
+  "phone": "+381603331111",
+  "pricePerNightSummer": 80,
+  "pricePerNightWinter": 120,
+  "createdAt": {
+    "$date": "2025-03-01T09:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-20T14:46:45.276Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000d002"
+  },
+  "owner": {
+    "$oid": "671a0000000000000000b001"
+  },
+  "name": "Zlatibor Borova Šuma",
+  "place": "Zlatibor",
+  "address": "Tic Polje 10, Zlatibor",
+  "description": "Moderan apartman blizu centra, terasa sa pogledom.",
+  "maxGuests": 4,
+  "amenities": [
+    "WiFi",
+    "Parking",
+    "Terasa",
+    "Pet friendly"
+  ],
+  "images": [
+    "/uploads/cabins/1760971574816-iqnh3i432cg.jpg",
+    "/uploads/cabins/1760971574818-zyc6f3xqr6d.jpg",
+    "/uploads/cabins/1760971574817-9njuklg3pfp.jpg",
+    "/uploads/cabins/1760971574818-gfj07rd83dl.jpg"
+  ],
+  "ratingAvg": 4,
+  "ratingCount": 2,
+  "isBlocked": false,
+  "blockedUntil": null,
+  "lat": 43.723,
+  "lng": 19.704,
+  "phone": "+381604442222",
+  "pricePerNightSummer": 70,
+  "pricePerNightWinter": 100,
+  "createdAt": {
+    "$date": "2025-04-15T09:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-20T14:46:16.469Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000d003"
+  },
+  "owner": {
+    "$oid": "671a0000000000000000b002"
+  },
+  "name": "Tara Mirna Luka",
+  "place": "Tara",
+  "address": "Kaluđerske Bare 5, Tara",
+  "description": "Koliba u borovoj šumi, blizu vidikovca Banjska stena.",
+  "maxGuests": 5,
+  "amenities": [
+    "WiFi",
+    "Parking",
+    "Dvorište"
+  ],
+  "images": [
+    "/uploads/cabins/1760971670291-04xd5rcf9zjd.jpg",
+    "/uploads/cabins/1760971670292-uzxrmpt4jz.jpg",
+    "/uploads/cabins/1760971670292-z1esvbirkxn.jpg",
+    "/uploads/cabins/1760971670292-b5l53ebvo9.jpg"
+  ],
+  "ratingAvg": 3.5,
+  "ratingCount": 2,
+  "isBlocked": false,
+  "blockedUntil": null,
+  "lat": 43.93,
+  "lng": 19.48,
+  "phone": "+381605553333",
+  "pricePerNightSummer": 60,
+  "pricePerNightWinter": 90,
+  "createdAt": {
+    "$date": "2025-02-20T09:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-20T14:47:53.512Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000d004"
+  },
+  "owner": {
+    "$oid": "671a0000000000000000b002"
+  },
+  "name": "Divčibare Vetrovita Poljana",
+  "place": "Divčibare",
+  "address": "Divčibare bb",
+  "description": "Rustična kućica sa velikim dvorištem.",
+  "maxGuests": 3,
+  "amenities": [
+    "Parking",
+    "Dvorište"
+  ],
+  "images": [
+    "/uploads/cabins/1760971657456-nre2ofxdtq.jpg",
+    "/uploads/cabins/1760971657456-n83dj24nywb.jpg",
+    "/uploads/cabins/1760971657457-8w4tsee3vam.jpg",
+    "/uploads/cabins/1760971657458-yi8swswtyz.jpg"
+  ],
+  "ratingAvg": 1,
+  "ratingCount": 3,
+  "isBlocked": false,
+  "blockedUntil": null,
+  "lat": 44.097,
+  "lng": 20.097,
+  "phone": "+381606663333",
+  "pricePerNightSummer": 55,
+  "pricePerNightWinter": 85,
+  "createdAt": {
+    "$date": "2025-05-10T09:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-20T14:50:55.505Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68f64ba99ab6ce990b70f3d7"
+  },
+  "owner": {
+    "$oid": "671a0000000000000000b002"
+  },
+  "name": "Golija Mountain House",
+  "place": "Golija",
+  "address": "Dajići bb, Golija",
+  "description": "Off-grid kuća: solarna energija, izvor vode, totalni mir.",
+  "maxGuests": 6,
+  "amenities": [
+    "Fireplace",
+    "Mountain view",
+    "Solar power",
+    "Spring water",
+    "BBQ"
+  ],
+  "images": [
+    "/uploads/cabins/1760971688185-hqy2q0r29eo.jpg",
+    "/uploads/cabins/1760971688185-7o6iphhji0b.jpg",
+    "/uploads/cabins/1760971688186-t8rek1g7foe.jpg",
+    "/uploads/cabins/1760971688187-sr5djr083hg.jpg"
+  ],
+  "ratingAvg": 0,
+  "ratingCount": 0,
+  "isBlocked": false,
+  "blockedUntil": null,
+  "lat": 43.3378,
+  "lng": 20.2767,
+  "phone": "0612345678",
+  "pricePerNightSummer": 4500,
+  "pricePerNightWinter": 5000,
+  "createdAt": {
+    "$date": "2025-10-20T14:48:09.517Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-20T14:48:09.517Z"
+  },
+  "__v": 0
+}]

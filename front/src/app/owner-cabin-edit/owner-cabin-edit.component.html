@@ -1,0 +1,91 @@
+<h2 class="h2">Izmena vikendice: {{ cabin?.name }}</h2>
+
+<div class="card form-card">
+  <form (ngSubmit)="save()" class="form-stack">
+    <div class="form-group">
+      <label for="name">Naziv</label>
+      <input id="name" class="input" [(ngModel)]="name" name="name">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="place">Mesto</label>
+        <input id="place" class="input" [(ngModel)]="place" name="place">
+      </div>
+      <div class="form-group">
+        <label for="address">Adresa</label>
+        <input id="address" class="input" [(ngModel)]="address" name="address">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Opis</label>
+      <textarea id="description" class="input" rows="3" [(ngModel)]="description" name="description"></textarea>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="maxGuests">Max gostiju</label>
+        <input id="maxGuests" class="input" type="number" min="1" [(ngModel)]="maxGuests" name="maxGuests">
+      </div>
+      <div class="form-group">
+        <label for="phone">Telefon</label>
+        <input id="phone" class="input" type="text" [(ngModel)]="phone" name="phone">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="priceSummer">Cena (leto)</label>
+        <input id="priceSummer" class="input" type="number" min="1" [(ngModel)]="pricePerNightSummer" name="pricePerNightSummer">
+      </div>
+      <div class="form-group">
+        <label for="priceWinter">Cena (zima)</label>
+        <input id="priceWinter" class="input" type="number" min="1" [(ngModel)]="pricePerNightWinter" name="pricePerNightWinter">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="lat">Latituda</label>
+        <input id="lat" class="input" type="number" step="any" [(ngModel)]="lat" name="lat">
+      </div>
+      <div class="form-group">
+        <label for="lng">Longituda</label>
+        <input id="lng" class="input" type="number" step="any" [(ngModel)]="lng" name="lng">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="amenities">Sadržaji (odvojeni zarezom)</label>
+      <input id="amenities" class="input" type="text" [(ngModel)]="amenitiesText" name="amenitiesText" placeholder="npr. wifi, parking, sauna">
+    </div>
+
+    <div class="upload-section">
+      <div class="form-group">
+        <label for="image-upload">Dodaj nove slike (JPG/PNG)</label>
+        <input id="image-upload" class="input-file" type="file" accept="image/png,image/jpeg" (change)="onPickImages($event)" multiple>
+      </div>
+    </div>
+
+    @if (images.length) {
+      <div class="image-preview-grid">
+        @for (p of images; let i = $index; track p) {
+          <div class="image-preview-item">
+            <img [src]="fixUrl(p)" alt="Prikaz slike" class="preview-img">
+            <button type="button" class="btn-remove-img" (click)="removeImage(i)" title="Ukloni sliku">×</button>
+          </div>
+        }
+      </div>
+    }
+
+    @if (errorMsg) { <p class="status-error">{{ errorMsg }}</p> }
+    @if (infoMsg)  { <p class="status-success">{{ infoMsg }}</p> }
+
+    <div class="actions-row">
+      <a class="btn secondary" [routerLink]="['/owner/cabins']">Nazad</a>
+      <button class="btn" type="submit" [disabled]="loading">
+        {{ loading ? 'Čuvanje...' : 'Sačuvaj izmene' }}
+      </button>
+    </div>
+  </form>
+</div>

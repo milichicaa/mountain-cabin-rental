@@ -1,0 +1,101 @@
+<h2 class="h2">Moje rezervacije</h2>
+
+<div class="row" style="gap:8px; align-items:center; margin-bottom:8px">
+  <button class="btn" (click)="load()" [disabled]="loading">Osveži</button>
+  @if (loading) { <span class="badge">Učitavanje...</span> }
+</div>
+
+@if (errorMsg) { <p style="color:#b91c1c">{{ errorMsg }}</p> }
+
+<h3 class="h3">Trenutna zakazivanja</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Vikendica</th>
+      <th>Mesto</th>
+      <th>Od</th>
+      <th>Do</th>
+      <th>Status</th>
+      <th>Akcije</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (r of current; track r._id) {
+      <tr>
+        <td>@if ($any(r.cabin)?.name) { {{ $any(r.cabin).name }} } @else { {{ r.cabin }} }</td>
+        <td>{{ $any(r.cabin)?.place || '—' }}</td>
+        <td>{{ fmt(r.dateFrom) }}</td>
+        <td>{{ fmt(r.dateTo) }}</td>
+        <td>{{ r.status }}</td>
+        <td class="actions-cell">
+          @if (canCancel(r)) { <button class="btn" (click)="cancel(r)">Otkaži</button> } @else { — }
+        </td>
+      </tr>
+    } @empty {
+      <tr><td colspan="6" class="empty-state">Nema trenutnih rezervacija.</td></tr>
+    }
+  </tbody>
+</table>
+
+<h3 class="h3" style="margin-top:16px">Prethodna zakazivanja (arhiva)</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Vikendica</th>
+      <th>Od</th>
+      <th>Do</th>
+      <th>Ocena</th>
+      <th>Komentar</th>
+      <th>Akcije</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (r of archive; track r._id) {
+      <tr>
+        <td>@if ($any(r.cabin)?.name) { {{ $any(r.cabin).name }} } @else { {{ r.cabin }} }</td>
+        <td>{{ fmt(r.dateFrom) }}</td>
+        <td>{{ fmt(r.dateTo) }}</td>
+        <td>
+          @if (r.userRating) {
+            <span class="stars">
+              @for (s of [1,2,3,4,5]; track s) {
+                <span [class.filled]="s <= r.userRating">★</span>
+              }
+            </span>
+          } @else { — }
+        </td>
+        <td>{{ r.userComment || '—' }}</td>
+        <td class="actions-cell">
+          @if (canRate(r)) {
+            @if (rateOpenId !== r._id) {
+              <button class="btn" (click)="openRate(r)">Oceni</button>
+            } @else {
+              <div class="form-group">
+                <div class="star-rating">
+                  @for (s of [1,2,3,4,5]; track s) {
+                    <button type="button"
+                            class="star"
+                            [class.filled]="s <= rateValue"
+                            (click)="setStar(s)">
+                      ★
+                    </button>
+                  }
+                </div>
+                <textarea class="input" rows="3" [(ngModel)]="rateComment" placeholder="Vaš komentar (opciono)"></textarea>
+                <div class="actions-row">
+                  <button class="btn" type="button" (click)="submitRate(r)" [disabled]="loading || rateValue<1">
+                    Sačuvaj ocenu ({{ rateValue }}/5)
+                  </button>
+                  <button class="btn secondary" type="button" (click)="cancelRate()" [disabled]="loading">Otkaži</button>
+                </div>
+                @if (errorMsg) { <div class="status-error small">{{ errorMsg }}</div> }
+              </div>
+            }
+          } @else { — }
+        </td>
+      </tr>
+    } @empty {
+      <tr><td colspan="6" class="empty-state">Arhiva je prazna.</td></tr>
+    }
+  </tbody>
+</table>

@@ -1,0 +1,104 @@
+/* Proširujemo karticu za registraciju */
+.auth-card.wide {
+  max-width: 900px;
+}
+
+/* Glavna mreža sa dve kolone */
+.register-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Kontejner za formu */
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Red sa više grupa */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Grupa (labela + input) */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Grupa radio dugmadi */
+.radio-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Poruka za validaciju */
+.hint {
+  font-size: 0.8em;
+  color: #b91c1c;
+}
+.hint.small {
+  font-size: 0.75em;
+  color: #6c757d;
+}
+
+/* Input za karticu sa ikonicom */
+.card-input-wrapper {
+  position: relative;
+}
+.card-brand-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 24px;
+}
+
+/* Prikaz slike */
+.image-preview {
+  margin-top: 0.5rem;
+  max-height: 80px;
+  border-radius: 8px;
+  align-self: flex-start;
+}
+
+/* Statusne poruke */
+.status-error, .status-success {
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 1rem;
+}
+.status-error { background-color: #fef2f2; color: #b91c1c; }
+.status-success { background-color: #f0fdf4; color: #15803d; }
+
+/* Red sa dugmetom za slanje */
+.submit-row {
+  margin-top: 1rem;
+  border-top: 1px solid #e9ecef;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Link ka prijavi */
+.auth-link {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9em;
+  color: #6c757d;
+}
+.auth-link a {
+  color: var(--primary);
+  text-decoration: none;
+}
+.auth-link a:hover {
+  text-decoration: underline;
+}

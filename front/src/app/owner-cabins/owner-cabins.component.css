@@ -1,0 +1,55 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.toolbar .actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Statusne poruke */
+.status-error, .status-success, .status-info {
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.status-error { background-color: #fef2f2; color: #b91c1c; }
+.status-success { background-color: #f0fdf4; color: #15803d; }
+.status-info { background-color: #eff6ff; color: #1d4ed8; }
+
+/* Kontejner za tabelu */
+.table-container {
+  overflow-x: auto;
+}
+
+/* Stil za "Blokirana" bedž */
+.badge.blocked {
+  background-color: #fee2e2;
+  color: #991b1b;
+  font-weight: bold;
+}
+
+/* Ćelija sa akcijama */
+.actions-header {
+  text-align: right;
+}
+.actions-cell {
+  white-space: nowrap;
+  text-align: right;
+}
+.actions-cell .btn {
+  margin-left: 8px;
+}
+
+/* Stil za praznu tabelu */
+.empty-state {
+  padding: 24px;
+  text-align: center;
+  color: #6c757d;
+}

@@ -1,0 +1,383 @@
+[{
+  "_id": {
+    "$oid": "671a0000000000000000f001"
+  },
+  "cabin": {
+    "$oid": "671a0000000000000000d001"
+  },
+  "tourist": {
+    "$oid": "671a0000000000000000c001"
+  },
+  "dateFrom": {
+    "$date": "2025-06-10T12:00:00.000Z"
+  },
+  "dateTo": {
+    "$date": "2025-06-12T08:00:00.000Z"
+  },
+  "adults": 2,
+  "children": 0,
+  "totalPrice": 160,
+  "status": "completed",
+  "userComment": "Letnji mini odmor.",
+  "ownerComment": "",
+  "userRating": 5,
+  "createdAt": {
+    "$date": "2025-05-15T09:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T09:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000f002"
+  },
+  "cabin": {
+    "$oid": "671a0000000000000000d001"
+  },
+  "tourist": {
+    "$oid": "671a0000000000000000c003"
+  },
+  "dateFrom": {
+    "$date": "2025-09-03T12:00:00.000Z"
+  },
+  "dateTo": {
+    "$date": "2025-09-06T08:00:00.000Z"
+  },
+  "adults": 2,
+  "children": 1,
+  "totalPrice": 360,
+  "status": "completed",
+  "userComment": "Super domaćin.",
+  "ownerComment": "",
+  "userRating": 4,
+  "createdAt": {
+    "$date": "2025-08-10T10:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-10T10:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000f003"
+  },
+  "cabin": {
+    "$oid": "671a0000000000000000d002"
+  },
+  "tourist": {
+    "$oid": "671a0000000000000000c002"
+  },
+  "dateFrom": {
+    "$date": "2025-08-14T12:00:00.000Z"
+  },
+  "dateTo": {
+    "$date": "2025-08-16T08:00:00.000Z"
+  },
+  "adults": 2,
+  "children": 0,
+  "totalPrice": 140,
+  "status": "completed",
+  "userComment": "Blizu centra.",
+  "ownerComment": "",
+  "userRating": 5,
+  "createdAt": {
+    "$date": "2025-07-20T11:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-20T11:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000f004"
+  },
+  "cabin": {
+    "$oid": "671a0000000000000000d002"
+  },
+  "tourist": {
+    "$oid": "671a0000000000000000c004"
+  },
+  "dateFrom": {
+    "$date": "2025-05-23T12:00:00.000Z"
+  },
+  "dateTo": {
+    "$date": "2025-05-26T08:00:00.000Z"
+  },
+  "adults": 1,
+  "children": 1,
+  "totalPrice": 210,
+  "status": "completed",
+  "userComment": "",
+  "ownerComment": "",
+  "userRating": 3,
+  "createdAt": {
+    "$date": "2025-05-10T09:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-10T09:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000f005"
+  },
+  "cabin": {
+    "$oid": "671a0000000000000000d003"
+  },
+  "tourist": {
+    "$oid": "671a0000000000000000c005"
+  },
+  "dateFrom": {
+    "$date": "2025-07-05T12:00:00.000Z"
+  },
+  "dateTo": {
+    "$date": "2025-07-07T08:00:00.000Z"
+  },
+  "adults": 2,
+  "children": 0,
+  "totalPrice": 120,
+  "status": "completed",
+  "userComment": "Mir i tišina.",
+  "ownerComment": "",
+  "userRating": 3,
+  "createdAt": {
+    "$date": "2025-06-01T10:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-01T10:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000f006"
+  },
+  "cabin": {
+    "$oid": "671a0000000000000000d004"
+  },
+  "tourist": {
+    "$oid": "671a0000000000000000c002"
+  },
+  "dateFrom": {
+    "$date": "2025-10-01T12:00:00.000Z"
+  },
+  "dateTo": {
+    "$date": "2025-10-02T08:00:00.000Z"
+  },
+  "adults": 2,
+  "children": 0,
+  "totalPrice": 85,
+  "status": "completed",
+  "userComment": "Ne preporučujem.",
+  "ownerComment": "",
+  "userRating": 1,
+  "createdAt": {
+    "$date": "2025-09-20T09:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-20T09:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000f010"
+  },
+  "cabin": {
+    "$oid": "671a0000000000000000d001"
+  },
+  "tourist": {
+    "$oid": "671a0000000000000000c001"
+  },
+  "dateFrom": {
+    "$date": "2025-10-20T12:00:00.000Z"
+  },
+  "dateTo": {
+    "$date": "2025-10-22T08:00:00.000Z"
+  },
+  "adults": 2,
+  "children": 0,
+  "totalPrice": 240,
+  "status": "accepted",
+  "userComment": "",
+  "ownerComment": "",
+  "createdAt": {
+    "$date": "2025-10-15T10:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-15T10:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000f011"
+  },
+  "cabin": {
+    "$oid": "671a0000000000000000d002"
+  },
+  "tourist": {
+    "$oid": "671a0000000000000000c002"
+  },
+  "dateFrom": {
+    "$date": "2025-10-21T12:00:00.000Z"
+  },
+  "dateTo": {
+    "$date": "2025-10-23T08:00:00.000Z"
+  },
+  "adults": 2,
+  "children": 0,
+  "totalPrice": 200,
+  "status": "accepted",
+  "userComment": "",
+  "ownerComment": "",
+  "createdAt": {
+    "$date": "2025-10-16T10:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-16T10:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000f012"
+  },
+  "cabin": {
+    "$oid": "671a0000000000000000d003"
+  },
+  "tourist": {
+    "$oid": "671a0000000000000000c003"
+  },
+  "dateFrom": {
+    "$date": "2025-10-22T12:00:00.000Z"
+  },
+  "dateTo": {
+    "$date": "2025-10-24T08:00:00.000Z"
+  },
+  "adults": 2,
+  "children": 0,
+  "totalPrice": 180,
+  "status": "pending",
+  "userComment": "Možemo li rani check-in?",
+  "ownerComment": "",
+  "createdAt": {
+    "$date": "2025-10-19T20:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-19T20:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000f013"
+  },
+  "cabin": {
+    "$oid": "671a0000000000000000d001"
+  },
+  "tourist": {
+    "$oid": "671a0000000000000000c004"
+  },
+  "dateFrom": {
+    "$date": "2025-11-07T12:00:00.000Z"
+  },
+  "dateTo": {
+    "$date": "2025-11-09T08:00:00.000Z"
+  },
+  "adults": 2,
+  "children": 0,
+  "totalPrice": 240,
+  "status": "pending",
+  "userComment": "Slavimo godišnjicu.",
+  "ownerComment": "",
+  "createdAt": {
+    "$date": "2025-10-10T08:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-10T08:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000f014"
+  },
+  "cabin": {
+    "$oid": "671a0000000000000000d004"
+  },
+  "tourist": {
+    "$oid": "671a0000000000000000c005"
+  },
+  "dateFrom": {
+    "$date": "2025-09-10T12:00:00.000Z"
+  },
+  "dateTo": {
+    "$date": "2025-09-12T08:00:00.000Z"
+  },
+  "adults": 2,
+  "children": 0,
+  "totalPrice": 240,
+  "status": "rejected",
+  "userComment": "Treba kolijevka za bebu.",
+  "ownerComment": "Nažalost, tih datuma je servis.",
+  "createdAt": {
+    "$date": "2025-08-20T09:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-20T09:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000f015"
+  },
+  "cabin": {
+    "$oid": "671a0000000000000000d002"
+  },
+  "tourist": {
+    "$oid": "671a0000000000000000c003"
+  },
+  "dateFrom": {
+    "$date": "2025-12-15T12:00:00.000Z"
+  },
+  "dateTo": {
+    "$date": "2025-12-18T08:00:00.000Z"
+  },
+  "adults": 2,
+  "children": 0,
+  "totalPrice": 300,
+  "status": "cancelled",
+  "userComment": "",
+  "ownerComment": "",
+  "createdAt": {
+    "$date": "2025-10-14T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-14T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000f016"
+  },
+  "cabin": {
+    "$oid": "671a0000000000000000d003"
+  },
+  "tourist": {
+    "$oid": "671a0000000000000000c001"
+  },
+  "dateFrom": {
+    "$date": "2025-09-25T12:00:00.000Z"
+  },
+  "dateTo": {
+    "$date": "2025-09-27T08:00:00.000Z"
+  },
+  "adults": 2,
+  "children": 0,
+  "totalPrice": 180,
+  "status": "completed",
+  "userComment": "",
+  "ownerComment": "",
+  "createdAt": {
+    "$date": "2025-09-10T09:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-10T09:00:00.000Z"
+  }
+}]

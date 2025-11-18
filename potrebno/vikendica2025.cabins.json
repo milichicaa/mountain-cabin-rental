@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Golija Mountain House",
+    "place": "Golija",
+    "address": "Dajići bb, Golija",
+    "description": "Off-grid kuća: solarna energija, izvor vode, totalni mir.",
+    "maxGuests": 6,
+    "amenities": [
+      "Fireplace",
+      "Mountain view",
+      "Solar power",
+      "Spring water",
+      "BBQ"
+    ],
+    "lat": 43.3378,
+    "lng": 20.2767,
+    "phone": "0612345678",
+    "pricePerNightSummer": 4500,
+    "pricePerNightWinter": 5000
+  }
+]

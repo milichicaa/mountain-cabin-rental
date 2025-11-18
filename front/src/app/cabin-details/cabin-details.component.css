@@ -1,0 +1,211 @@
+.map-wrap { height: 360px; border-radius: 12px; overflow: hidden; }
+
+/* Leaflet tile fix protiv max-width:100% globalnog */
+.leaflet-container img { image-rendering: auto; max-width: none !important; }
+
+/* Ako ti navbar ide preko mape ili obrnuto */
+header, .topbar, nav { position: relative; z-index: 1000; }
+.leaflet-container { z-index: 0; }
+
+/* Osnovni detalji i opis */
+.details-card {
+  margin-bottom: 1rem;
+}
+.details-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 1.05em;
+}
+.rating-summary {
+  margin-top: 8px;
+}
+.description {
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+/* Mapa */
+.map-card {
+  margin-bottom: 1rem;
+  padding: 10px;
+}
+.map-container {
+  height: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+/* Leaflet fix protiv max-width:100% globalnog */
+.leaflet-container img {
+  image-rendering: auto;
+  max-width: none !important;
+}
+/* Ako ti navbar ide preko mape ili obrnuto */
+header, .topbar, nav {
+  position: relative;
+  z-index: 1000;
+}
+.leaflet-container {
+  z-index: 0;
+}
+
+/* Forma za recenziju */
+.review-form {
+  margin-bottom: 1rem;
+}
+.review-form .h3 {
+  margin-top: 0;
+}
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-group.flex-grow {
+  flex: 1;
+  min-width: 200px;
+}
+.form-group.align-end {
+  padding-top: 25px; /* Poravnanje sa ostalim inputima */
+}
+
+/* Statusne poruke */
+.status-error, .status-success {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 8px;
+}
+.status-error { color: #b91c1c; background-color: #fef2f2; }
+.status-success { color: #15803d; background-color: #f0fdf4; }
+
+/* Tabela sa recenzijama */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.toolbar .h3 {
+  margin: 0;
+}
+.rating-cell {
+  font-weight: bold;
+  color: #f59e0b; /* Žuta boja za zvezdicu */
+}
+.actions-header {
+  text-align: right;
+}
+td.actions {
+  text-align: right;
+}
+.btn.danger {
+  background-color: #ef4444;
+  border-color: #ef4444;
+  color: white;
+  font-size: 0.9em;
+  padding: 4px 8px;
+  height: auto;
+}
+.empty-state {
+  text-align: center;
+  padding: 24px;
+  color: #6c757d;
+}
+/* --- GALERIJA --- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .gallery { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1024px) {
+  .gallery { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+}
+
+.thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;       /* iste srazmere svih thumb-ova */
+  border: 0;
+  padding: 0;
+  background: #f3f4f6;       /* skeleton pozadina */
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: zoom-in;
+  box-shadow: 0 2px 10px rgba(2,6,23,.08);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.thumb:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
+
+.thumb:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(2,6,23,.12);
+}
+
+.thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* nema razvlačenja */
+  display: block;
+  /* mali “fade-in” kad se učita */
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+.thumb-img[src] { opacity: 1; }
+
+/* --- LIGHTBOX --- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.8);
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+  padding: 16px;
+  backdrop-filter: blur(2px);
+}
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.35);
+}
+
+.lb-btn, .lb-close {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background .15s ease, transform .15s ease;
+}
+.lb-btn:hover, .lb-close:hover { background: rgba(255,255,255,.22); transform: translateY(-50%) scale(1.04); }
+
+.prev { left: 24px; }
+.next { right: 24px; }
+
+/* X za zatvaranje gore desno */
+.lb-close {
+  top: 24px;
+  right: 24px;
+  transform: none;
+  font-size: 20px;
+}

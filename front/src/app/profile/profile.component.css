@@ -1,0 +1,65 @@
+/* Kartica sa osnovnim informacijama */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #dee2e6;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.5rem 1.5rem;
+  font-size: 0.9em;
+}
+
+/* Struktura forme */
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Statusna poruka */
+.status-message {
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+.status-message.success {
+  background-color: #f0fdf4;
+  color: #15803d;
+}
+.status-message.error {
+  background-color: #fef2f2;
+  color: #b91c1c;
+}
+
+/* Red sa dugmetom za slanje */
+.submit-row {
+  margin-top: 1rem;
+  border-top: 1px solid #e9ecef;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}

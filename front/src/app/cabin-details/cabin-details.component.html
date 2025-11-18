@@ -1,0 +1,173 @@
+@if (loading) {
+  <p class="status-info">Detalji se učitavaju...</p>
+}
+
+@else if (!loading && errorMsg) {
+  <p class="status-error">{{ errorMsg }}</p>
+}
+
+@else if (!loading && cabin) {
+  <h2 class="h2">{{ cabin.name }}</h2>
+
+  <div class="card details-card">
+    <div class="details-grid">
+      <div><strong>Mesto:</strong> {{ cabin.place }}</div>
+      <div><strong>Telefon:</strong> {{ cabin.phone || '—' }}</div>
+      <div><strong>Cena (leto):</strong> {{ cabin.pricePerNightSummer }}€</div>
+      <div><strong>Cena (zima):</strong> {{ cabin.pricePerNightWinter }}€</div>
+    </div>
+    <div class="description"><strong>Opis:</strong> {{ cabin.description || '—' }}</div>
+    @if (cabin.ratingCount) {
+      <div class="rating-summary">
+        Prosečna ocena: {{ cabin.ratingAvg | number:'1.1-2' }} ({{ cabin.ratingCount }} ocena)
+      </div>
+    }
+    @if (cabin.amenities.length) {
+      <div class="details-grid">
+        <div><strong>Sadržaji:</strong> {{ cabin.amenities.join(', ') }}</div>
+      </div>
+    }
+  </div>
+
+  <h3>Galerija</h3>
+  <div class="gallery">
+    @for (img of cabin.images; track img) {
+      <button class="thumb" type="button" (click)="openLightbox(img)">
+        <img
+          [src]="fixUrl(img)"
+          (error)="onImgErr($event)"
+          alt="Slika vikendice"
+          class="thumb-img"
+          loading="lazy"
+          decoding="async"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+        >
+      </button>
+    }
+  </div>
+
+  <!-- LIGHTBOX (prikazuje se samo kad je otvoren) -->
+  @if (lightboxOpen) {
+    <div class="lightbox" (click)="closeLightbox()">
+      <button class="lb-btn prev" type="button" (click)="prev($event)" aria-label="Prethodna slika">‹</button>
+      <img class="lightbox-img" [src]="fixUrl(activeImg)" alt="Uvećana slika" (click)="$event.stopPropagation()">
+      <button class="lb-btn next" type="button" (click)="next($event)" aria-label="Sledeća slika">›</button>
+      <button class="lb-close" type="button" (click)="closeLightbox()" aria-label="Zatvori">✕</button>
+    </div>
+  }
+
+
+  <div class="card map-card">
+    <div id="map" class="map-container"></div>
+  </div>
+
+  <h3>Recenzije ({{ reviews.length }})</h3>
+  <div class="reviews-list">
+    @if (reviews.length) {
+      @for (review of reviews; track review._id) {
+        <div class="review-card">
+          <p><strong>{{ isUser(review.tourist) ? review.tourist.username : 'Nepoznat' }}</strong> (Ocena: {{ review.rating }}/5)</p>
+          <p>{{ review.comment }}</p>
+        </div>
+      }
+    } @else {
+      <p>Nema recenzija za ovu vikendicu.</p>
+    }
+  </div>
+
+  <div class="card">
+    <h3 class="h3">Rezervacija</h3>
+
+    <div class="row" style="gap:8px; margin-bottom:8px">
+      <span [style.fontWeight]="step===1 ? 700 : 400">1) Datumi i gosti</span>
+      <span>›</span>
+      <span [style.fontWeight]="step===2 ? 700 : 400">2) Potvrda i plaćanje</span>
+    </div>
+
+    @if (step===1) {
+      <div class="form-stack">
+        @if (cabin.isBlocked) {
+          <div class="hint" style="color:#b91c1c">Vikendica je blokirana (nedostupna).</div>
+        }
+
+        <div class="form-group">
+          <label>Od</label>
+          <input class="input" type="date" [(ngModel)]="dateFrom" [min]="minDateISO" (change)="recompute()">
+        </div>
+        <div class="form-group">
+          <label>Do</label>
+          <input class="input" type="date" [(ngModel)]="dateTo" [min]="dateFrom || minDateISO" (change)="recompute()">
+        </div>
+        <div class="form-group">
+          <label>Odrasli</label>
+          <input class="input" type="number" min="1" [(ngModel)]="adults" (input)="recompute()">
+        </div>
+        <div class="form-group">
+          <label>Deca</label>
+          <input class="input" type="number" min="0" [(ngModel)]="children" (input)="recompute()">
+        </div>
+
+        <div class="hint" style="margin-top:6px">
+          Ulazak je od 14:00, izlazak do 10:00. Sistem automatski postavlja vremena.
+        </div>
+
+        <div class="actions-row">
+          <button class="btn" type="button" (click)="nextStep()">Dalje</button>
+        </div>
+
+        @if (errorMsg) { <p class="status-error">{{ errorMsg }}</p> }
+      </div>
+    }
+
+    @if (step===2) {
+      <div class="form-stack">
+        <div class="summary-box confirmation">
+          <div><strong>Vikendica:</strong> {{ cabin.name }} ({{ cabin.place }})</div>
+          <div><strong>Period:</strong> {{ dateFrom || '—' }} → {{ dateTo || '—' }}</div>
+          <div><strong>Gosti:</strong> {{ adults }} odraslih, {{ children }} dece</div>
+          <div class="total-price">Ukupno (procena): {{ estimate ?? '—' }}</div>
+        </div>
+
+        @if (savedCardMasked) {
+          <div class="form-group">
+            <label>
+              <input type="radio" name="payCard" [(ngModel)]="useSavedCard" [ngModelOptions]="{standalone:true}" [value]="true">
+              Koristi sačuvanu karticu: <strong>{{ savedCardMasked }}</strong>
+            </label>
+            <label>
+              <input type="radio" name="payCard" [(ngModel)]="useSavedCard" [ngModelOptions]="{standalone:true}" [value]="false">
+              Unesi novu karticu
+            </label>
+          </div>
+        }
+
+        @if (!savedCardMasked || !useSavedCard) {
+          <div class="form-group">
+            <label>Broj kartice</label>
+            <input class="input" type="text" placeholder="1234 5678 9012 3456" (input)="onCardInput($event)">
+            @if (!cardValid) { <div class="hint">Unesite ispravan broj (Visa/MasterCard/Diners).</div> }
+          </div>
+        } @else {
+          <div class="hint">Biće korišćena sačuvana kartica.</div>
+        }
+
+        <div class="form-group">
+          <label>Dodatni zahtev (opciono, do 500 znakova)</label>
+          <textarea class="input" rows="3" [(ngModel)]="userComment" maxlength="500"
+                    placeholder="Npr. kasni check-in, dečiji krevet..."></textarea>
+        </div>
+
+        <div class="actions-row">
+          <button class="btn secondary" type="button" (click)="backToStep1()" [disabled]="submitting">Nazad</button>
+          <button class="btn" type="button" (click)="submitReservation()"
+                  [disabled]="submitting || (!savedCardMasked && !cardValid)">
+            {{ submitting ? 'Slanje...' : 'Plati i pošalji zahtev' }}
+          </button>
+        </div>
+
+        @if (errorMsg) { <p class="status-error">{{ errorMsg }}</p> }
+        @if (infoMsg)  { <p class="status-success">{{ infoMsg }}</p> }
+      </div>
+    }
+  </div>
+}

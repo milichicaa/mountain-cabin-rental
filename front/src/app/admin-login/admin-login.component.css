@@ -1,0 +1,36 @@
+/*
+  Lokalni stilovi za admin login formu.
+  Većina stilova (.card, .input, .btn, .hint) dolazi iz globalnog styles.css.
+*/
+
+/* Kontejner za formu koji dodaje razmak između elemenata */
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Razmak između grupa polja */
+}
+
+/* Grupa koja sadrži labelu, input i poruku o grešci */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Mali razmak između labele i inputa */
+}
+
+label {
+  font-weight: 500;
+  color: #334155;
+}
+
+/* Dugme zauzima punu širinu */
+.btn {
+  width: 100%;
+  margin-top: 8px; /* Dodatni razmak iznad dugmeta */
+}
+
+/* Specifičan stil za grešku sa servera da se istakne */
+.server-error {
+  text-align: center;
+  width: 100%;
+  margin-top: -8px; /* Smanjujemo razmak da bude bliže poljima */
+}

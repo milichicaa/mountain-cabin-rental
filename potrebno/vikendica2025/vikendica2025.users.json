@@ -1,0 +1,168 @@
+[{
+  "_id": {
+    "$oid": "671a0000000000000000a001"
+  },
+  "username": "admin",
+  "email": "admin@vikendice.rs",
+  "passwordHash": "$2b$10$FwwlfVMyI8ZEKbu/llnE5uQpRv0x1.VifsJ86o1CWEXVMK/nlV4Aq",
+  "firstName": "Admin",
+  "lastName": "Sistem",
+  "gender": "M",
+  "address": "Bulevar kralja Aleksandra 73, Beograd",
+  "phone": "+381113021234",
+  "profileImagePath": "/uploads/profili/admin.jpg",
+  "creditCardMasked": "",
+  "creditCardFull": "",
+  "role": "admin",
+  "active": true,
+  "createdAt": {
+    "$date": "2025-01-10T10:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000b001"
+  },
+  "username": "vlasnik1",
+  "email": "jovan.jovanovic@example.com",
+  "passwordHash": "$2b$10$bKwLTiz/LTxCfAUJuyXX1OCY/LIfOLjA4k541No1hz.n.1bba9C9.",
+  "firstName": "Jovan",
+  "lastName": "Jovanović",
+  "gender": "M",
+  "address": "Kralja Petra I 12, Kragujevac",
+  "phone": "+38164111222",
+  "profileImagePath": "/uploads/profiles/1760971557803-h85rof11whh.jpeg",
+  "creditCardMasked": "**** **** **** 4001",
+  "creditCardFull": "4539453945394001",
+  "role": "vlasnik",
+  "active": true,
+  "createdAt": {
+    "$date": "2025-02-05T09:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000b002"
+  },
+  "username": "vlasnik2",
+  "email": "ana.petrovic@example.com",
+  "passwordHash": "$2b$10$JLK/YamVFGmlX22rGSGiJuWU39zuMHuZ1wE5QBDHcYOYs4Nik.B5K",
+  "firstName": "Ana",
+  "lastName": "Petrović",
+  "gender": "Ž",
+  "address": "Cara Dušana 7, Novi Sad",
+  "phone": "+38164222333",
+  "profileImagePath": "/uploads/profiles/1760970121024-0nl7audrtpdd.jpg",
+  "creditCardMasked": "**** **** **** 4001",
+  "creditCardFull": "4539453945394001",
+  "role": "vlasnik",
+  "active": true,
+  "createdAt": {
+    "$date": "2025-02-10T11:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000c001"
+  },
+  "username": "turista1",
+  "email": "turista1@example.com",
+  "passwordHash": "$2b$10$vVsVIWBO7Pjgj2p7CiO78.kCyxtiMBZQSkC0YgqTMLAgMoBtxbTHG",
+  "firstName": "Milan",
+  "lastName": "Milić",
+  "gender": "M",
+  "address": "Cara Dušana 13",
+  "phone": "+381650123123",
+  "profileImagePath": "/uploads/profiles/1760973648827-yu2gzvle2qh.jpg",
+  "creditCardMasked": "**** **** **** 4001",
+  "creditCardFull": "4539453945394001",
+  "role": "turista",
+  "active": true,
+  "createdAt": {
+    "$date": "2025-03-02T10:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000c002"
+  },
+  "username": "turista2",
+  "email": "turista2@example.com",
+  "passwordHash": "$2b$10$t1edNUq6ZY6eDCXXuPaSw.qr2Q3np9qTDqx5HrCwropf0pIyHxSIq",
+  "firstName": "Ivana",
+  "lastName": "Ivić",
+  "gender": "Ž",
+  "address": "Neka Ulica 12, Beograd",
+  "phone": "+381650246246",
+  "profileImagePath": "/uploads/profili/t2.jpg",
+  "creditCardMasked": "**** **** **** 4002",
+  "creditCardFull": "4556455645564002",
+  "role": "turista",
+  "active": true,
+  "createdAt": {
+    "$date": "2025-03-03T10:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000c003"
+  },
+  "username": "turista3",
+  "email": "turista3@example.com",
+  "passwordHash": "$2b$10$wF2C7CdMRlFr5Uf0e57IpOmgxMqDmD/tvh8O4wS6gtNYQBbAnGUl6",
+  "firstName": "Marko",
+  "lastName": "Marković",
+  "gender": "M",
+  "address": "Neka Ulica 13, Beograd",
+  "phone": "+381650369369",
+  "profileImagePath": "/uploads/profiles/1760970669473-ayi923vxp0w.jpg",
+  "creditCardMasked": "**** **** **** 4003",
+  "creditCardFull": "4916491649164003",
+  "role": "turista",
+  "active": true,
+  "createdAt": {
+    "$date": "2025-03-04T10:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000c004"
+  },
+  "username": "turista4",
+  "email": "turista4@example.com",
+  "passwordHash": "$2b$10$L3IwAQWKIHBznS3w6ZjTo.cARaXRK3nZVIBff10tCsUUX2SUgkAHe",
+  "firstName": "Jelena",
+  "lastName": "Jovanović",
+  "gender": "Ž",
+  "address": "Neka Ulica 14, Beograd",
+  "phone": "+381650492492",
+  "profileImagePath": "/uploads/profili/t4.jpg",
+  "creditCardMasked": "**** **** **** 4004",
+  "creditCardFull": "4532453245324004",
+  "role": "turista",
+  "active": true,
+  "createdAt": {
+    "$date": "2025-03-05T10:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "671a0000000000000000c005"
+  },
+  "username": "turista5",
+  "email": "turista5@example.com",
+  "passwordHash": "$2b$10$Up1uN18PWrkt4JDj61O43ODDwTR1mP609sPHSMf1iTFoVrzRLxPQa",
+  "firstName": "Nikola",
+  "lastName": "Nikolić",
+  "gender": "M",
+  "address": "Neka Ulica 15, Beograd",
+  "phone": "+381650615615",
+  "profileImagePath": "/uploads/profili/t5.jpg",
+  "creditCardMasked": "**** **** **** 4005",
+  "creditCardFull": "4929492949294005",
+  "role": "turista",
+  "active": true,
+  "createdAt": {
+    "$date": "2025-03-06T10:00:00.000Z"
+  }
+}]

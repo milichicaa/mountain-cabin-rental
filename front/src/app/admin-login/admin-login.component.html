@@ -1,0 +1,21 @@
+<div class="auth-wrap">
+  <div class="card auth-card">
+    <h2 class="h2">Admin prijava</h2>
+
+    <form (ngSubmit)="login()" #f="ngForm" class="card">
+      <label>Korisničko ime</label>
+      <input class="input" [(ngModel)]="body.username" name="username" required />
+
+      <label>Lozinka</label>
+      <input class="input" type="password" [(ngModel)]="body.password" name="password" required />
+
+      <button class="btn" type="submit" [disabled]="loading">
+        {{ loading ? 'Prijava...' : 'Prijavi se' }}
+      </button>
+
+      @if (errorMsg) {
+        <p class="status-error">{{ errorMsg }}</p>
+      }
+    </form>
+  </div>
+</div>

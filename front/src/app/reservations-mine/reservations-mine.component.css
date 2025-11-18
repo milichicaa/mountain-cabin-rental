@@ -1,0 +1,77 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Statusne poruke */
+.status-error, .status-success, .status-info {
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.status-error { background-color: #fef2f2; color: #b91c1c; }
+.status-success { background-color: #f0fdf4; color: #15803d; }
+.status-info { background-color: #eff6ff; color: #1d4ed8; }
+
+/* Kontejner za tabelu */
+.table-container {
+  overflow-x: auto;
+}
+
+/* Ćelija sa akcijama */
+.actions-header {
+  text-align: right;
+}
+.actions-cell {
+  white-space: nowrap;
+  text-align: right;
+}
+.actions-cell .btn {
+  margin-left: 8px;
+}
+
+/* Stil za praznu tabelu */
+.empty-state {
+  padding: 24px;
+  text-align: center;
+  color: #6c757d;
+}
+
+/* --- Stilovi za modalni dijalog --- */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.star-rating {
+  font-size: 2rem;
+  color: #e9ecef;
+  cursor: pointer;
+}
+.star-rating span {
+  transition: color 0.2s;
+}
+.star-rating span:hover,
+.star-rating span.filled {
+  color: #ffc107;
+}
+
+.actions-row {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.status-error.small {
+  padding: 8px;
+  margin-top: 1rem;
+  font-size: 0.9em;
+}

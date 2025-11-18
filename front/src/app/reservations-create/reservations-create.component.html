@@ -1,0 +1,100 @@
+<h2 class="h2">Kreiranje rezervacije</h2>
+
+<div class="card" style="margin-bottom:12px">
+  @if (cabin) {
+    <div class="row" style="gap:16px; flex-wrap:wrap">
+      <div><strong>Naziv:</strong> {{ cabin.name }}</div>
+      <div><strong>Mesto:</strong> {{ cabin.place }}</div>
+      <div><strong>Max gostiju:</strong> {{ cabin.maxGuests }}</div>
+      <div>
+        <strong>Cena/noć:</strong>
+        {{ cabin.pricePerNightSummer }} (letnja) / {{ cabin.pricePerNightWinter }} (zimska)
+      </div>
+    </div>
+    @if ($any(cabin).isBlocked) {
+      <div class="hint" style="color:#b91c1c; margin-top:6px">Vikendica je blokirana.</div>
+    }
+    <div class="hint" style="margin-top:6px">
+      Check-in od <strong>14:00</strong>, check-out do <strong>10:00</strong>.
+    </div>
+  } @else {
+    <div style="color:#b91c1c">Nema podataka o vikendici.</div>
+  }
+</div>
+
+<div class="card">
+  <div class="row" style="gap:12px; flex-wrap:wrap">
+    <div>
+      <label>Od</label>
+      <input class="input" type="date" [(ngModel)]="dateFrom" [min]="todayISO" (change)="recompute()" />
+    </div>
+    <div>
+      <label>Do</label>
+      <input class="input" type="date" [(ngModel)]="dateTo"  [min]="dateFrom || todayISO" (change)="recompute()" />
+    </div>
+    <div>
+      <label>Odrasli</label>
+      <input class="input" type="number" min="1" [(ngModel)]="adults" (input)="recompute()" />
+    </div>
+    <div>
+      <label>Deca</label>
+      <input class="input" type="number" min="0" [(ngModel)]="children" (input)="recompute()" />
+    </div>
+  </div>
+
+  <div class="hint" style="margin-top:8px">
+    @if (nights > 0) {
+      Noćenja: <strong>{{ nights }}</strong>
+      @if (estimate !== null) { — Procena cene: <strong>{{ estimate }}</strong> }
+    } @else {
+      Izaberi ispravan opseg datuma.
+    }
+  </div>
+</div>
+
+<div class="card" style="margin-top:12px">
+  <h3 class="h3">Plaćanje</h3>
+
+  @if (savedCardMasked) {
+    <div class="form-group">
+      <label>
+        <input type="radio" name="payCard" [(ngModel)]="useSavedCard" [ngModelOptions]="{standalone: true}" [value]="true">
+        Koristi sačuvanu karticu: <strong>{{ savedCardMasked }}</strong>
+      </label>
+      <label>
+        <input type="radio" name="payCard" [(ngModel)]="useSavedCard" [ngModelOptions]="{standalone: true}" [value]="false">
+        Unesi novu karticu
+      </label>
+    </div>
+  }
+
+  @if (!savedCardMasked || !useSavedCard) {
+    <div class="form-group">
+      <label>Broj kartice</label>
+      <input class="input" type="text" placeholder="1234 5678 9012 3456" (input)="onCardInput($event)" />
+      @if (submitted && !cardValid) {
+        <div class="hint">Unesite ispravan broj (Visa/MasterCard/Diners).</div>
+      }
+    </div>
+  } @else {
+    <div class="hint">Biće korišćena sačuvana kartica.</div>
+  }
+
+  <div class="form-group" style="margin-top:12px">
+    <label>Dodatni zahtev (opciono, do 500 znakova)</label>
+    <textarea class="input" rows="3" [(ngModel)]="userComment" maxlength="500"
+              placeholder="Npr. kasni check-in, dečiji krevet..." ></textarea>
+  </div>
+
+  <div class="row" style="margin-top:12px; gap:8px; align-items:center">
+    <button class="btn"
+            (click)="submit()"
+            [disabled]="loading || !cabin || nights <= 0 || (!useSavedCard && !cardValid)">
+      {{ loading ? 'Slanje...' : 'Plati i pošalji zahtev' }}
+    </button>
+    @if (loading) { <span class="badge">Slanje...</span> }
+  </div>
+
+  @if (errorMsg) { <p style="color:#b91c1c; margin-top:8px">{{ errorMsg }}</p> }
+  @if (infoMsg)  { <p style="color:#15803d; margin-top:8px">{{ infoMsg }}</p> }
+</div>

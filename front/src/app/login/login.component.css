@@ -1,0 +1,29 @@
+/*
+  Većina stilova (.auth-wrap, .card, .form-stack, .input, .btn, .hint)
+  dolazi iz globalnog styles.css.
+*/
+
+/* Stil za grešku sa servera */
+.server-error {
+  color: #b91c1c; /* Tamnocrvena */
+  background-color: #fef2f2;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  width: 100%;
+}
+
+/* Link za alternativnu akciju (npr. registracija) */
+.auth-link {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9em;
+  color: #6c757d;
+}
+.auth-link a {
+  color: var(--primary);
+  text-decoration: none;
+}
+.auth-link a:hover {
+  text-decoration: underline;
+}

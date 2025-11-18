@@ -1,0 +1,107 @@
+<h2 class="h2">Dodaj novu vikendicu</h2>
+
+<div class="card form-card">
+  <form (ngSubmit)="submit()" class="form-stack">
+    <div class="form-group">
+      <label for="name">Naziv</label>
+      <input id="name" class="input" type="text" [(ngModel)]="name" name="name" [class.invalid]="submitted && !name">
+      @if (submitted && !name) { <div class="hint">Obavezno polje.</div> }
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="place">Mesto</label>
+        <input id="place" class="input" type="text" [(ngModel)]="place" name="place" [class.invalid]="submitted && !place">
+        @if (submitted && !place) { <div class="hint">Obavezno polje.</div> }
+      </div>
+      <div class="form-group">
+        <label for="address">Adresa</label>
+        <input id="address" class="input" type="text" [(ngModel)]="address" name="address" [class.invalid]="submitted && !address">
+        @if (submitted && !address) { <div class="hint">Obavezno polje.</div> }
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Opis</label>
+      <textarea id="description" class="input" rows="3" [(ngModel)]="description" name="description" [class.invalid]="submitted && !description"></textarea>
+      @if (submitted && !description) { <div class="hint">Obavezno polje.</div> }
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="maxGuests">Max gostiju</label>
+        <input id="maxGuests" class="input" type="number" min="1" [(ngModel)]="maxGuests" name="maxGuests">
+        @if (submitted && (!maxGuests || maxGuests <= 0)) { <div class="hint">Mora biti > 0.</div> }
+      </div>
+      <div class="form-group">
+        <label for="phone">Telefon</label>
+        <input id="phone" class="input" type="text" [(ngModel)]="phone" name="phone">
+        @if (submitted && !phone) { <div class="hint">Obavezno.</div> }
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="priceSummer">Cena (leto)</label>
+        <input id="priceSummer" class="input" type="number" min="1" [(ngModel)]="pricePerNightSummer" name="pricePerNightSummer">
+        @if (submitted && (!pricePerNightSummer || pricePerNightSummer <= 0)) { <div class="hint">Mora biti > 0.</div> }
+      </div>
+      <div class="form-group">
+        <label for="priceWinter">Cena (zima)</label>
+        <input id="priceWinter" class="input" type="number" min="1" [(ngModel)]="pricePerNightWinter" name="pricePerNightWinter">
+        @if (submitted && (!pricePerNightWinter || pricePerNightWinter <= 0)) { <div class="hint">Mora biti > 0.</div> }
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="lat">Lat</label>
+        <input id="lat" class="input" type="number" step="0.000001" [(ngModel)]="lat" name="lat">
+        @if (submitted && (lat == null || lat < -90 || lat > 90)) { <div class="hint">Opseg -90..90</div> }
+      </div>
+      <div class="form-group">
+        <label for="lng">Lng</label>
+        <input id="lng" class="input" type="number" step="0.000001" [(ngModel)]="lng" name="lng">
+        @if (submitted && (lng == null || lng < -180 || lng > 180)) { <div class="hint">Opseg -180..180</div> }
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="amenities">Sadržaji (odvojeni zarezom)</label>
+      <textarea id="amenities" class="input" rows="2" [(ngModel)]="amenitiesText" name="amenitiesText" placeholder="npr. wifi, parking, sauna"></textarea>
+    </div>
+
+    <div class="upload-section">
+      <div class="form-group">
+        <label>Dodaj slike (JPG/PNG)</label>
+        <input class="input-file" type="file" accept=".jpg,.jpeg,.png" multiple (change)="onPickCabinImages($event)">
+        <small class="hint">Preporuka: 100–300 px, upload se radi na server.</small>
+      </div>
+      <div class="form-group">
+        <label>Učitaj JSON (prefill)</label>
+        <input class="input-file" type="file" accept="application/json" (change)="onPickJson($event)">
+        <small class="hint">JSON može sadržati: name, place, address, description, phone, maxGuests, lat, lng, pricePerNightSummer, pricePerNightWinter, amenities, images.</small>
+      </div>
+    </div>
+
+    @if (images.length) {
+      <div class="image-preview-grid">
+        @for (p of images; track p; let i = $index) {
+          <div class="image-preview-item">
+            <img class="preview-img" [src]="fixUrl(p)" alt="preview">
+            <button type="button" class="btn-remove-img" (click)="removeImage(i)">×</button>
+          </div>
+        }
+      </div>
+    }
+
+    @if (errorMsg) { <p class="status-error">{{ errorMsg }}</p> }
+    @if (infoMsg)  { <p class="status-success">{{ infoMsg }}</p> }
+
+    <div class="submit-row">
+      <button class="btn" type="submit" [disabled]="loading">
+        {{ loading ? 'Slanje...' : 'Sačuvaj vikendicu' }}
+      </button>
+    </div>
+  </form>
+</div>

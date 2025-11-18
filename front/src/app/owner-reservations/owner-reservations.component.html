@@ -1,0 +1,92 @@
+<div class="toolbar">
+  <h2 class="h2">Rezervacije</h2>
+  <button class="btn" (click)="load()" [disabled]="loading">
+    {{ loading ? 'Učitavanje...' : 'Osveži' }}
+  </button>
+</div>
+
+@if (errorMsg && !isDialogOpen) { <p class="status-error">{{ errorMsg }}</p> }
+@if (infoMsg) { <p class="status-success">{{ infoMsg }}</p> }
+
+<div class="calendar-container">
+  <full-calendar [options]="calendarOptions"></full-calendar>
+  <div class="legend">
+    Legenda:
+    <span class="legend-item pending">Na čekanju</span>
+    <span class="legend-item accepted">Prihvaćeno</span>
+  </div>
+</div>
+
+<h3 class="h3">Zahtevi na čekanju</h3>
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Vikendica</th>
+        <th>Od</th>
+        <th>Do</th>
+        <th>Gosti</th>
+        <th>Cena</th>
+        <th class="actions-header">Akcije</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (r of itemsPending; track r._id) {
+        <tr>
+          <td>{{ isCabinInfo(r.cabin) ? r.cabin.name : r.cabin }}</td>
+          <td>{{ fmtDate(r.dateFrom) }}</td>
+          <td>{{ fmtDate(r.dateTo) }}</td>
+          <td>{{ r.adults + r.children }}</td>
+          <td>{{ r.totalPrice }}€</td>
+          <td class="actions-cell">
+            <button class="btn" (click)="accept(r)" [disabled]="loading">Prihvati</button>
+            <button class="btn secondary" (click)="openDialog(r)" [disabled]="loading" title="Odbij uz komentar">Odbij</button>
+            <button class="btn secondary" (click)="openDialog(r)" [disabled]="loading">Detalji</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="6" class="empty-state">Nema novih zahteva za rezervaciju.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+@if (isDialogOpen && selectedReservation) {
+  <div class="modal-backdrop" (click)="closeDialog()">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <h3 class="h3">Detalji rezervacije</h3>
+      <div class="modal-details">
+        <div><strong>Vikendica:</strong> {{ isCabinInfo(selectedReservation.cabin) ? selectedReservation.cabin.name : selectedReservation.cabin }}</div>
+        <div><strong>Period:</strong> {{ fmtDate(selectedReservation.dateFrom) }} - {{ fmtDate(selectedReservation.dateTo) }}</div>
+        <div><strong>Gosti:</strong> {{ selectedReservation.adults + selectedReservation.children }}</div>
+        <div><strong>Status:</strong> <span class="badge" [ngClass]="selectedReservation.status">{{ selectedReservation.status }}</span></div>
+        <div><strong>Cena:</strong> {{ selectedReservation.totalPrice }}€</div>
+      </div>
+
+      @if (errorMsg && isDialogOpen) { <p class="status-error">{{ errorMsg }}</p> }
+
+      @if (selectedReservation.status === 'pending') {
+        <div class="form-group">
+          <label for="reject-reason">Komentar (obavezno kod odbijanja)</label>
+          <input id="reject-reason" class="input" type="text" [(ngModel)]="dialogRejectReason">
+        </div>
+        <div class="modal-actions">
+          <button class="btn" (click)="accept(selectedReservation)" [disabled]="loading">Prihvati</button>
+          <button class="btn secondary" (click)="reject(selectedReservation)" [disabled]="loading">Odbij</button>
+          <button class="btn secondary" (click)="closeDialog()">Zatvori</button>
+        </div>
+      } @else if (canComplete(selectedReservation)) {
+        <div class="modal-actions">
+          <button class="btn" (click)="complete(selectedReservation)" [disabled]="loading">Završi</button>
+          <button class="btn secondary" (click)="closeDialog()">Zatvori</button>
+        </div>
+      } @else {
+        <div class="modal-actions">
+          <button class="btn secondary" (click)="closeDialog()">Zatvori</button>
+        </div>
+      }
+    </div>
+  </div>
+}

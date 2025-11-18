@@ -1,0 +1,140 @@
+<h2 class="h2">Korisnici</h2>
+
+<div class="toolbar">
+  <input class="input" type="text" placeholder="Pretraga (počinje sa)…"
+         [(ngModel)]="q" (keydown.enter)="doSearch()">
+  @if (rows.length) {
+    <span class="total-count">Prikazano: {{ filtered.length }} / {{ rows.length }}</span>
+  }
+</div>
+
+@if (loading) { <p class="status-info">Učitavanje…</p> }
+@if (errorMsg) { <p class="status-error">{{ errorMsg }}</p> }
+@if (infoMsg)  { <p class="status-success">{{ infoMsg }}</p> }
+
+<div class="create-user-form">
+  <h3 class="h3">Dodaj korisnika</h3>
+  <div class="form-grid">
+    <input class="input" placeholder="username *" [(ngModel)]="creating.username">
+    <input class="input" placeholder="email *" [(ngModel)]="creating.email">
+    <input class="input" placeholder="lozinka *" type="password" [(ngModel)]="creating.password">
+    <input class="input" placeholder="ime *" [(ngModel)]="creating.firstName">
+    <input class="input" placeholder="prezime *" [(ngModel)]="creating.lastName">
+    <select class="input" [(ngModel)]="creating.gender">
+      <option value="" disabled selected>Pol *</option>
+      <option value="M">M</option>
+      <option value="Ž">Ž</option>
+    </select>
+    <input class="input" placeholder="adresa *" [(ngModel)]="creating.address">
+    <input class="input" placeholder="telefon (+381… ) *" [(ngModel)]="creating.phone">
+    <select class="input" [(ngModel)]="creating.role">
+      <option value="turista">turista</option>
+      <option value="vlasnik">vlasnik</option>
+    </select>
+    <input class="input" type="file" accept=".jpg,.jpeg,.png" (change)="onCreateFileChange($event)">
+  </div>
+  <div class="form-footer">
+    <small class="hint">* Turista mora imati sliku; vlasnik dobija podrazumevanu.</small>
+    <button class="btn" (click)="doCreate()" [disabled]="loading">Sačuvaj korisnika</button>
+  </div>
+</div>
+
+<hr class="separator">
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th>Pol</th>
+        <th>Telefon</th>
+        <th>Adresa</th>
+        <th>Uloga</th>
+        <th>Status</th>
+        <th>Kreiran</th>
+        <th class="actions-header">Akcije</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (u of filtered; track u._id) {
+        <tr>
+          <td>
+            @if (editingId === u._id) {
+              <input class="input" [(ngModel)]="editModel.username" placeholder="Korisničko ime" />
+            } @else {
+              {{ u.username }}
+            }
+          </td>
+          <td>
+            @if (editingId === u._id) { <input class="input" [(ngModel)]="editModel.email"> }
+            @else { {{ u.email }} }
+          </td>
+          <td>
+            @if (editingId === u._id) { <input class="input" [(ngModel)]="editModel.firstName"> }
+            @else { {{ u.firstName }} }
+          </td>
+          <td>
+            @if (editingId === u._id) { <input class="input" [(ngModel)]="editModel.lastName"> }
+            @else { {{ u.lastName }} }
+          </td>
+          <td>
+            @if (editingId === u._id) {
+              <select class="input" [(ngModel)]="editModel.gender">
+                <option value="M">M</option> <option value="Ž">Ž</option>
+              </select>
+            } @else { {{ u.gender }} }
+          </td>
+          <td>
+            @if (editingId === u._id) { <input class="input" [(ngModel)]="editModel.phone"> }
+            @else { {{ u.phone }} }
+          </td>
+          <td>
+            @if (editingId === u._id) { <input class="input" [(ngModel)]="editModel.address"> }
+            @else { {{ u.address }} }
+          </td>
+          <td>
+            @if (editingId === u._id) {
+              <select class="input" [(ngModel)]="editModel.role">
+                <option value="turista">turista</option> <option value="vlasnik">vlasnik</option>
+              </select>
+            } @else { {{ u.role }} }
+          </td>
+          <td>
+            <span class="badge" [class.inactive]="!u.active">
+              {{ u.active ? 'Aktivan' : 'Neaktivan' }}
+            </span>
+          </td>
+          <td>{{ u.createdAt | date:'dd.MM.yyyy' }}</td>
+          <td class="actions">
+            @if (editingId === u._id) {
+              <div class="edit-actions">
+                <input class="input" type="password" placeholder="Nova lozinka (opciono)" [(ngModel)]="editModel.newPassword">
+                <input class="input" type="file" accept=".jpg,.jpeg,.png" (change)="onEditFileChange($event)">
+                <div class="btn-row">
+                  <button class="btn" (click)="doUpdate(u)" [disabled]="loading">Sačuvaj</button>
+                  <button class="btn secondary" (click)="cancelEdit()" [disabled]="loading">Otkaži</button>
+                </div>
+              </div>
+            } @else {
+              @if (!isAdmin(u) && !isSelf(u)) {
+                <div class="btn-row">
+                  <button class="btn" (click)="startEdit(u)" [disabled]="loading">Izmeni</button>
+                  <button class="btn danger" (click)="deactivate(u)" [disabled]="loading || !u.active">Deaktiviraj</button>
+                  <button class="btn" (click)="activate(u)" [disabled]="loading || u.active">Aktiviraj</button>
+                  <button class="btn danger" (click)="doDelete(u)" [disabled]="loading">Obriši</button>
+                </div>
+              } @else {
+                <span>—</span>
+              }
+            }
+          </td>
+        </tr>
+      } @empty {
+        <tr><td colspan="11" class="empty-state">Nema rezultata za zadati filter.</td></tr>
+      }
+    </tbody>
+  </table>
+</div>
